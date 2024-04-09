@@ -5,3 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
 })
+
+
+// recuerda que puedes optimizar la velocidad de las aplicaciones de react usando millionjs
