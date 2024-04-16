@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Login() {
+export default function StateLogin() {
   const [enteredValues, setEnteredValues] = useState({
     email: "",
     password: "",
@@ -11,6 +11,10 @@ export default function Login() {
     console.log(
       `User email: ${enteredValues.email} \nPassword: ${enteredValues.password}`
     );
+    setEnteredValues({
+      email: "",
+      password: "",
+    })
   }
 
   function handleInputChange(event) {
