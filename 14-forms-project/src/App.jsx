@@ -9,7 +9,7 @@ function App() {
     <>
       <Header />
       <main>
-        <RefLogin />
+        <SignUp />
       </main>
     </>
   );
