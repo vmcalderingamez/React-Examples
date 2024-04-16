@@ -6,8 +6,13 @@ export default function StateLogin() {
     password: "",
   });
 
+  const [didEdit, setDidEdit] = useState({
+    email: false,
+    password: false,
+  });
+
   const emailIsInvalid =
-    enteredValues.email !== "" && !enteredValues.email.includes("@");
+    didEdit.email && !enteredValues.email.includes("@");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -25,6 +30,17 @@ export default function StateLogin() {
       ...prevValues,
       [event.target.id]: event.target.value,
     }));
+    setDidEdit(prevEdit => ({
+      ...prevEdit,
+      [event.target.id]: false
+    }))
+  }
+
+  function handleInputBlur(event) {
+    setDidEdit(prevEdit => ({
+      ...prevEdit,
+      [event.target.id]: true
+    }))
   }
 
   return (
@@ -38,6 +54,7 @@ export default function StateLogin() {
             id="email"
             type="email"
             name="email"
+            onBlur={handleInputBlur}
             onChange={handleInputChange}
             value={enteredValues.email}
           />
@@ -52,6 +69,7 @@ export default function StateLogin() {
             id="password"
             type="password"
             name="password"
+            onBlur={handleInputBlur}
             onChange={handleInputChange}
             value={enteredValues.password}
           />
